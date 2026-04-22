@@ -5,6 +5,8 @@ const INSTANCES_TEXT = "Cantidad de instancias: "
 var instancesCount = 0
 @onready var redinstancia = $RedGenerator
 @onready var violetinstancia = $VioletGenerator
+@onready var reset = $Reset
+
 
 func _ready():
 	# Inicializa el texto de "CountLabel" usando el texto
@@ -14,8 +16,15 @@ func _ready():
 		redinstancia.button_down.connect(count_new_instance)
 	if violetinstancia:
 		violetinstancia.button_down.connect(count_new_instance)
+	if reset:
+		reset.button_down.connect(delete)
+		pass 
 
 func count_new_instance():
 	instancesCount += 1
+	$CountLabel.text = INSTANCES_TEXT + str(instancesCount)
+	
+func delete():
+	instancesCount = 0
 	$CountLabel.text = INSTANCES_TEXT + str(instancesCount)
 	
