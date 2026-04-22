@@ -1,5 +1,5 @@
 extends TextureButton
-
+var scene = preload("res://assets/block_red.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,3 +13,8 @@ func _process(delta: float) -> void:
 
 func _on_button_down() -> void:
 	pass # Replace with function body.
+
+
+func generate_block():
+	var instance = scene.instantiate()
+	add_child(instance)
